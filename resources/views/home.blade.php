@@ -74,7 +74,7 @@ content="width=device-width, initial-scale=1.0">
         @foreach($posts as $post)
         <div style="background-color: rgb(204, 176, 230); padding: 10px; margin: 10px;">
             <h3>{{$post['title']}} by {{$post->user->name}}&nbsp;&nbsp;{{$post['updated_at']}} &nbsp UTC </h3>
-            <img class="center" src={{asset('images/'. $post->image_path)}} alt="" width=10% >
+            <img src={{asset('images/'. $post->image_path)}} alt="" width=10% >
             <p>{{$post['body']}}</p>
 
         </div>
