@@ -2,11 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
 </head>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    .zoom {
+      padding: 50px;    
+      transition: transform .2s;
+      width: 20%;    
+      margin: 2%;
+      
+    }
+    
+    .zoom:hover {
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.5); 
+    }
+    </style>
 <body>
     @auth
     <p>Congrats you are loged in.</p>
@@ -36,7 +56,7 @@ content="width=device-width, initial-scale=1.0">
         @foreach($posts as $post)
         <div style="background-color: rgb(176, 204, 230); padding: 10px; margin: 10px;">
             <h3>{{$post['title']}} by {{$post->user->name}}&nbsp;&nbsp;{{$post['updated_at']}} &nbsp UTC</h3>
-            <p><img src={{asset('images/'. $post->image_path)}} alt="" width=10% ></p>
+            <p><img src={{asset('images/'. $post->image_path)}} alt=""  class="zoom" ></p>
             <p>{{$post['body']}}</p>
             <p><a href="/edit-post/{{$post->id}}">Edit</a></p>
             <form action="/delete-post/{{$post->id}}" method="POST">
@@ -74,7 +94,7 @@ content="width=device-width, initial-scale=1.0">
         @foreach($posts as $post)
         <div style="background-color: rgb(204, 176, 230); padding: 10px; margin: 10px;">
             <h3>{{$post['title']}} by {{$post->user->name}}&nbsp;&nbsp;{{$post['updated_at']}} &nbsp UTC </h3>
-            <img src={{asset('images/'. $post->image_path)}} alt="" width=10% >
+            <img src={{asset('images/'. $post->image_path)}} alt=""  class="zoom">
             <p>{{$post['body']}}</p>
 
         </div>
